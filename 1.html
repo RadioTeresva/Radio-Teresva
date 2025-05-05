@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хіти нашої перемоги !</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <style>
+        body {
+            background-color: #212121;
+            background-image: url('1-background-desktop.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        @media (max-width: 768px) {
+            body {
+                background-image: url('1-background-mobile.jpg');
+            }
+        }
+        .centered-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .rounded-photo {
+            width: 350px;
+            height: 350px;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+        .playPauseButton {
+            background-color: #ffffff;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-top: 0px;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .icon {
+            width: 50%;
+            height: 50%;
+        }
+        .song-title {
+            margin-top: 10px;
+            padding: 5px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border-radius: 5px;
+            margin-bottom: 10px;
+       }
+        .logo {
+            position: absolute;
+            top: 12px;
+            left: 30px;
+            width: 142px;
+            cursor: pointer;
+            filter: brightness(0) invert(100%);
+        }
+        @media (max-width: 768px) {
+         .logo {
+            position: absolute;
+            top: 18px;
+            left: 31%;
+            width: 142px;
+            cursor: pointer;
+            filter: brightness(0) invert(100%);
+        }
+    </style>
+</head>
+<body>
+<a href="index.html">
+    <img src="Home.png" alt="Назад" class="logo">
+</a>
+<div class="centered-content">
+    <img src="Хіти-нашої-перемоги.jpg" alt="Логотип" class="rounded-photo">
+    <div id="songTitle" class="song-title">Хіти нашої перемоги !</div>
+    <div class="playPauseButton" id="playPauseButton">
+        <img id="icon" class="icon" src="play.png" alt="Play">
+    </div>
+</div>
+<audio id="audioPlayer">
+    Ваш браузер не підтримує елемент <code>audio</code>.
+</audio>
+<script>
+    const playlist = [
+        { src: 'NoMusic.mp3', title: 'Радіостанція ще не наповнена', duration: 7 },
+        { src: 'NoMusic.mp3', title: 'Радіостанція ще не наповнена', duration: 7 },
+        { src: 'NoMusic.mp3', title: 'Радіостанція ще не наповнена', duration: 7 }
+    ];
+    let currentSongIndex = 0;
+    let liveMode = true;
+    const audioPlayer = document.getElementById('audioPlayer');
+    const playPauseButton = document.getElementById('playPauseButton');
+    const icon = document.getElementById('icon');
+    const songTitle = document.getElementById('songTitle');
+
+    function setPlayIcon() {
+        icon.src = 'play.png';
+        icon.alt = 'Play';
+    }
+
+    function setPauseIcon() {
+        icon.src = 'pause.png';
+        icon.alt = 'Pause';
+    }
+
+    function updateSongTitle() {
+        songTitle.textContent = playlist[currentSongIndex].title;
+    }
+
+    playPauseButton.addEventListener('click', () => {
+        if (audioPlayer.paused) {
+            if (liveMode) {
+                startPlaybackFromCalculatedTime();
+            } else {
+                audioPlayer.play();
+                setPauseIcon();
+            }
+        } else {
+            audioPlayer.pause();
+            setPlayIcon();
+        }
+    });
+
+    audioPlayer.addEventListener('ended', () => {
+        currentSongIndex = (currentSongIndex + 1) % playlist.length;
+        audioPlayer.src = playlist[currentSongIndex].src;
+        audioPlayer.load();
+        audioPlayer.play();
+        setPauseIcon();
+        updateSongTitle();
+    });
+
+    function startPlaybackFromCalculatedTime() {
+        const startDate = new Date('2024-10-12T09:00:00Z');
+        const now = new Date();
+        const timeDifference = (now - startDate) / 1000;
+        const totalDuration = playlist.reduce((sum, song) => sum + song.duration, 0);
+        let timeIntoCurrentPlay = timeDifference % totalDuration;
+        let accumulatedTime = 0;
+
+        for (let i = 0; i < playlist.length; i++) {
+            accumulatedTime += playlist[i].duration;
+            if (timeIntoCurrentPlay < accumulatedTime) {
+                currentSongIndex = i;
+                break;
+            }
+        }
+
+        const currentSong = playlist[currentSongIndex];
+        const timeOffset = currentSong.duration - (accumulatedTime - timeIntoCurrentPlay);
+        audioPlayer.src = currentSong.src;
+        audioPlayer.currentTime = timeOffset;
+        audioPlayer.play();
+        setPauseIcon();
+        updateSongTitle();
+    }
+
+    if ('mediaSession' in navigator) {
+        function updateMediaSessionMetadata() {
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: "Хіти нашої перемоги !",
+                artist: playlist[currentSongIndex].title,
+                artwork: [
+                    { src: 'Хіти-нашої-перемоги.jpg', sizes: '1920x1920', type: 'image/jpeg' }
+                ]
+            });
+        }
+
+        audioPlayer.addEventListener('play', () => {
+            navigator.mediaSession.playbackState = 'playing';
+            updateMediaSessionMetadata();
+        });
+
+        audioPlayer.addEventListener('pause', () => {
+            navigator.mediaSession.playbackState = 'paused';
+        });
+
+        navigator.mediaSession.setActionHandler('play', () => {
+            audioPlayer.play();
+        });
+
+        navigator.mediaSession.setActionHandler('pause', () => {
+            audioPlayer.pause();
+        });
+    }
+</script>
+</body>
+</html>
