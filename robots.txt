@@ -1,3 +1,0 @@
-User-agent: *
-Disallow: /404.html /404-Mobile.html
-Sitemap: https://radio-teresva.pp.ua/sitemap.xml
