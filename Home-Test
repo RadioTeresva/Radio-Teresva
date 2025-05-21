@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Teresva</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <script>
+        // Перевірка пристрою та перенаправлення
+        if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+            window.location.href = "Home.html";
+        } else {
+            console.log("Використовується ПК");
+        }
+    </script>
+    <style>
+        body {
+            background-image: url('desktop-background.jpg');
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .header {
+            position: relative;
+            padding: 10px;
+            color: white;
+        }
+        .number-info {
+            position: absolute;
+            top: 3px;
+            right: 84px;
+            text-align: right;
+            font-size: 19px;
+        }
+        .mail-info {
+            position: absolute;
+            top: 26px;
+            right: 28px;
+            text-align: right;
+            font-size: 19px;
+        }
+        .advertisement {
+            position: absolute;
+            left: 954px;
+            top: 36px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .container {
+            text-align: center;
+            padding-top: 20px;
+        }
+        .logo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 40px;
+            width: 450px;
+        }
+        .photo-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .photo {
+            width: 200px;
+            height: auto;
+            margin: 0 25px;
+            cursor: pointer;
+        }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="number-info">
+            <p>+380 00 000 00 00</p>
+        </div>
+        <div class="mail-info">
+            <p>radio.teresva@gmail.com</p>
+        </div>
+        <div class="advertisement">Реклама:</div>
+    </div>
+
+    <div class="container">
+        <img src="Radio-Teresva.png" alt="Логотип" class="logo">
+
+        <div class="photo-row">
+            <a href="1.html"><img src="Хіти-нашої-перемоги.jpg" alt="Хіти нашої перемоги" class="photo"></a>
+            <a href="2.html"><img src="Українські-хіти.jpg" alt="Українські хіти" class="photo"></a>
+            <a href="3.html"><img src="Французькі-хіти.jpg" alt="Французькі хіти" class="photo"></a>
+            <a href="4.html"><img src="Італійські-хіти.jpg" alt="Італійські хіти" class="photo"></a>
+        </div>
+        
+        <div class="photo-row">
+            <a href="5.html"><img src="Латинські-хіти.jpg" alt="Латинські хіти" class="photo"></a>
+            <a href="6.html"><img src="Румунські-хіти.jpg" alt="Румунські хіти" class="photo"></a>
+            <a href="7.html"><img src="Світові-хіти.jpg" alt="Світові хіти" class="photo"></a>
+            <a href="8.html"><img src="Top-Hits.jpg" alt="Top Hits" class="photo"></a>
+        </div>
+
+        <div class="photo-row">
+            <a href="9.html"><img src="Phonk.jpg" alt="Phonk" class="photo"></a>
+            <a href="10.html"><img src="Rock.jpg" alt="Rock" class="photo"></a>
+            <a href="11.html"><img src="Urban.jpg" alt="Urban" class="photo"></a>
+            <a href="12.html"><img src="Jazz.jpg" alt="Jazz" class="photo"></a>
+        </div>
+
+        <div class="photo-row">
+            <a href="13.html"><img src="Classic.jpg" alt="Classic" class="photo"></a>
+            <a href="14.html"><img src="Relax.jpg" alt="Relax" class="photo"></a>
+            <a href="15.html"><img src="Lo-Fi.jpg" alt="Lo-Fi" class="photo"></a>
+            <a href="16.html"><img src="Electro.jpg" alt="Electro" class="photo"></a>
+        </div>
+
+        <div class="photo-row">
+            <a href="17.html"><img src="Піаніно.jpg" alt="Піаніно" class="photo"></a>
+            <a href="18.html"><img src="Скрипка.jpg" alt="Скрипка" class="photo"></a>
+            <a href="19.html"><img src="Саундтреки.jpg" alt="Саундтреки" class="photo"></a>
+            <a href="20.html"><img src="Dance-hits.jpg" alt="Dance Hits" class="photo"></a>
+        </div>
+
+        <div class="photo-row">
+            <a href="21.html"><img src="Christmas-hits.jpg" alt="Christmas Hits" class="photo"></a>
+            <a href="22.html"><img src="Різдвяні-хіти.jpg" alt="Різдвяні хіти" class="photo"></a>
+            <a href="23.html"><img src="Колядки-та-щедрівки.jpg" alt="Колядки та щедрівки" class="photo"></a>
+            <a href="24.html"><img src="Коломийки.jpg" alt="Коломийки" class="photo"></a>
+        </div>
+
+        <div class="photo-row">
+            <a href="25.html"><img src="Аудіокниги.jpg" alt="Аудіокниги" class="photo"></a>
+            <a href="26.html"><img src="Аудіоказки.jpg" alt="Аудіоказки" class="photo"></a>
+            <a href="27.html"><img src="Жарти.jpg" alt="Жарти" class="photo"></a>
+        </div>
+    </div>
+
+    <footer>
+        <div>© 2025 Radio Teresva</div>
+        <div>Всі права захищені.</div>
+    </footer>
+</body>
+</html>
