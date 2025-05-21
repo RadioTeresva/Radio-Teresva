@@ -117,6 +117,8 @@
     }
 
     setInterval(checkForUpdates, 30000);
+    checkForUpdates(); // Виконати перевірку одразу
+    
 
     const audioPlayer = document.getElementById('audioPlayer');
     const playPauseButton = document.getElementById('playPauseButton');
