@@ -105,7 +105,7 @@
     const icon = document.getElementById('icon');
     const songTitle = document.getElementById('songTitle');
 
-    fetch('https://raw.githubusercontent.com/RadioTeresva/Radio-Teresva/refs/heads/main/playlist.json')
+    fetch('https://radio-teresva.pp.ua/Music/Classic.json')
         .then(response => response.json())
         .then(data => {
             playlist = data;
