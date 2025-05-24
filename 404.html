@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Сторінку не знайдено</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <script>
+        // Перевірка пристрою та перенаправлення
+        if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+            console.log("Використовується мобільний пристрій");
+        } else {
+            window.location.href = "404-desktop.html";
+        }
+    </script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: url('404-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #212121;
+        }
+        .container {
+            position: relative;
+            top: -20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        h1 {
+            font-size: 44px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin-top: 24px;
+            margin-bottom: 0;
+            display: inline-block;
+            line-height: 0.8;
+            color: #ffffff
+        }
+        h2 {
+            font-size: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin: 0;
+            display: inline-block;
+            line-height: 1.2;
+            color: #ffffff
+        }
+        .button {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+            border: 2px solid white;
+            border-radius: 5px;
+            background: transparent;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="Radio-Teresva.png" alt="Логотип">
+        <img src="404.gif" alt="GIF">
+        <h1>404</h1>
+        <h2>Сторінку не знайдено...</h2>
+        <a href="index.html" class="button">На головну ⭆</a>
+    </div>
+</body>
+</html>
